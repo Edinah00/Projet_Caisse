@@ -1,4 +1,3 @@
-// 2024-06-01-000001_CreateProduitTable.php
 <?php
 namespace App\Database\Migrations;
 use CodeIgniter\Database\Migration;
