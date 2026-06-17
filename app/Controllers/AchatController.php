@@ -26,7 +26,7 @@ class AchatController extends BaseController
 
     }
 
-    puclic function ajouter()
+    public function ajouter()
     {
         $caisse = session()->get('caisse');
         $produit_id = $this->request->getPost('produit_id');
