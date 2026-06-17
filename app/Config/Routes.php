@@ -4,8 +4,16 @@ use CodeIgniter\Router\RouteCollection;
 
 /**
  * @var RouteCollection $routes
- */
-//$routes->get('/', 'Home::index');
-// Routes.php
-$routes->get('/produits', 'Produit::index');
-// Controller
+ */// Auth
+$routes->get('/',           'AuthController::login');
+$routes->post('/login',     'AuthController::doLogin');
+$routes->get('/logout',     'AuthController::logout');
+
+// Choix caisse
+$routes->get('/caisse',     'CaisseController::choisir');
+$routes->post('/caisse',    'CaisseController::valider');
+
+// Achats
+$routes->get('/achats',           'AchatController::index');
+$routes->post('/achats/ajouter',  'AchatController::ajouter');
+$routes->post('/achats/cloturer', 'AchatController::cloturer');
