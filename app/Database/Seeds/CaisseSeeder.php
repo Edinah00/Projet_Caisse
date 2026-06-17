@@ -5,7 +5,29 @@ use CodeIgniter\Database\Seeder;
 class CaisseSeeder extends Seeder
 {
     public function run()
-    {
+    {   
+        // Users
+    $users = [
+        [
+            'username'   => 'admin',
+            'password'   => password_hash('admin123', PASSWORD_DEFAULT),
+            'role'       => 'admin',
+            'created_at' => date('Y-m-d H:i:s'),
+        ],
+        [
+            'username'   => 'caissier1',
+            'password'   => password_hash('1234', PASSWORD_DEFAULT),
+            'role'       => 'caissier',
+            'created_at' => date('Y-m-d H:i:s'),
+        ],
+        [
+            'username'   => 'caissier2',
+            'password'   => password_hash('1234', PASSWORD_DEFAULT),
+            'role'       => 'caissier',
+            'created_at' => date('Y-m-d H:i:s'),
+        ],
+    ];
+    $this->db->table('users')->insertBatch($users);
         // Produits
         $produits = [
             ['designation' => 'Riz 5kg',       'prix' => 12500, 'quantite_stock' => 100],
