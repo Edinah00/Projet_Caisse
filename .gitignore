@@ -1,0 +1,23 @@
+# Dépendances
+/vendor/
+
+# Fichiers d'environnement (données sensibles)
+.env
+
+# Dossier writable (logs, cache, sessions, uploads)
+/writable/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Tests coverage
+/build/
+/coverage/
+
+# Node (si utilisé)
+node_modules/
