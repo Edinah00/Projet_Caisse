@@ -1,16 +1,15 @@
 <?php
 namespace App\Controllers;
+use App\Models\UserModel;
 
 class AuthController extends BaseController
 {
-    // Identifiants simples en dur pour le TD
-    private array $users = [
-        'caissier'  => '1234',
-        'admin'     => 'admin',
-    ];
-
     public function login()
     {
+        // Si déjà connecté, on redirige
+        if (session()->get('user')) {
+            return redirect()->to('/caisse');
+        }
         return view('auth/login');
     }
 
@@ -19,12 +18,23 @@ class AuthController extends BaseController
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
 
-        if (isset($this->users[$username]) && $this->users[$username] === $password) {
-            session()->set('user', $username);
+        $model = new UserModel();
+        $user  = $model->findByUsername($username);
+
+        // Vérification : user existe + mot de passe correct
+        if ($user && password_verify($password, $user['password'])) {
+            session()->set([
+                'user'     => $user['username'],
+                'user_id'  => $user['id'],
+                'role'     => $user['role'],
+                'logged_in' => true,
+            ]);
             return redirect()->to('/caisse');
         }
 
-        return redirect()->back()->with('error', 'Identifiants incorrects');
+        return redirect()->back()
+                         ->with('error', 'Identifiants incorrects')
+                         ->withInput();
     }
 
     public function logout()

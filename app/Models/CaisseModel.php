@@ -6,5 +6,5 @@ class CaisseModel extends Model
 {
     protected $table = 'caisse';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['numero', 'localisation'];
+    protected $allowedFields = ['numero', 'localisation','montant'];
 }

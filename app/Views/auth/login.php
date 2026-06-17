@@ -20,11 +20,11 @@
                     <form method="POST" action="/login">
                         <div class="mb-3">
                             <label>Utilisateur</label>
-                            <input type="text" name="username" class="form-control" required>
+                            <input type="text" name="username" class="form-control" value="admin" required>
                         </div>
                         <div class="mb-3">
                             <label>Mot de passe</label>
-                            <input type="password" name="password" class="form-control" required>
+                            <input type="password" name="password" class="form-control" value="admin123" required>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Se connecter</button>
                     </form>

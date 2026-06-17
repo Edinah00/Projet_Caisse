@@ -6,6 +6,11 @@ class CaisseSeeder extends Seeder
 {
     public function run()
     {   
+         // Vider les tables avant d'insérer (évite les doublons)
+    $this->db->table('users')->truncate();
+    $this->db->table('produit')->truncate();
+    $this->db->table('caisse')->truncate();
+
         // Users
     $users = [
         [

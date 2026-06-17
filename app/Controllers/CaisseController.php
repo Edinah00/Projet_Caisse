@@ -7,7 +7,11 @@ class Caissecontroller extends BaseController
     public function choisir()
     {
         if (!session()->get('user')) return redirect()->to('/');
-        $model = new CaisseModel();
+
+        // Réinitialiser la caisse en session
+        session()->remove('caisse');
+
+        $model   = new CaisseModel();
         $caisses = $model->findAll();
         return view('caisse/choisir', ['caisses' => $caisses]);
     }

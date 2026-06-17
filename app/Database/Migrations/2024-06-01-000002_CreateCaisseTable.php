@@ -1,6 +1,7 @@
 <?php
 namespace App\Database\Migrations;
 use CodeIgniter\Database\Migration;
+
 class CreateCaisseTable extends Migration
 {
     public function up()
@@ -9,9 +10,14 @@ class CreateCaisseTable extends Migration
             'id'           => ['type' => 'INTEGER', 'auto_increment' => true],
             'numero'       => ['type' => 'VARCHAR', 'constraint' => 50],
             'localisation' => ['type' => 'VARCHAR', 'constraint' => 100],
+            'montant'      => ['type' => 'DECIMAL', 'constraint' => '10,2', 'default' => 0],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('caisse');
     }
-    public function down() { $this->forge->dropTable('caisse'); }
+
+    public function down()
+    {
+        $this->forge->dropTable('caisse');
+    }
 }
